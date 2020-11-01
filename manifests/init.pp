@@ -1,0 +1,4 @@
+#
+class profile_vault (
+) {
+}
