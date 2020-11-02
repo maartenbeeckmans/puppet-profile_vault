@@ -25,7 +25,7 @@ class profile_vault (
     }
   },
   Optional[Hash]              $telemetry            = undef,
-  String                      $version              = '1.5.4',
+  String                      $version              = '1.5.5',
 ){
   class {'vault':
     config_dir         => $config_dir,
