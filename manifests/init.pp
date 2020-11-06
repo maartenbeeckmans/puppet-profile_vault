@@ -71,7 +71,7 @@ class profile_vault (
     consul::service { $sd_service_name:
       checks => [
         {
-          http     => "http://${facts['networking']['fqdn']}:8200",
+          http     => "http://${facts['networking']['ip']}:8200",
           interval => '10s'
         }
       ],
