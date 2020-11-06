@@ -57,11 +57,11 @@ class profile_vault (
 
   if $manage_firewall_entry {
     firewall { '08200 allow vault UI and API':
-      port   => 8200,
+      dport  => 8200,
       action => 'accept',
     }
     firewall { '08201 allow vault cluster':
-      port   => 8201,
+      dport  => 8201,
       action => 'accept',
     }
   }
