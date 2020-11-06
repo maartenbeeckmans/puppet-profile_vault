@@ -44,15 +44,16 @@ class profile_vault (
     }
   }
   class {'vault':
-    config_dir         => $config_dir,
-    enable_ui          => $enable_ui,
-    extra_config       => $extra_config,
-    listener           => $listener,
-    manage_storage_dir => $manage_storage_dir,
-    storage            => $storage,
-    telemetry          => $telemetry,
-    version            => $version,
-    install_method     => 'repo',
+    config_dir          => $config_dir,
+    enable_ui           => $enable_ui,
+    extra_config        => $extra_config,
+    listener            => $listener,
+    manage_storage_dir  => $manage_storage_dir,
+    storage             => $storage,
+    telemetry           => $telemetry,
+    version             => $version,
+    manage_service_file => true,
+    install_method      => 'repo',
   }
 
   if $manage_firewall_entry {
