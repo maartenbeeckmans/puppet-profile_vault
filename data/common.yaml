@@ -1,0 +1,18 @@
+---
+profile_vault::config_dir: '/etc/vault.d'
+profile_vault::advertise_address: "%{facts.networking.ip}"
+profile_vault::enable_ui: true
+profile_vault::manage_firewall_entry: true
+profile_vault::manage_sd_service: false
+profile_vault::sd_service_name: 'vault-ui'
+profile_vault::sd_service_tags:
+  - metrics
+profile_vault::version: '1.6.1'
+profile_vault::manage_repo: true
+profile_vault::repo_gpg_key: 'E8A032E094D8EB4EA189D270DA418C88A3219F7B'
+profile_vault::repo_gpg_url: 'https://apt.releases.hashicorp.com/gpg'
+profile_vault::repo_url: 'https://apt.releases.hashicorp.com'
+profile_vault::root_ca_file: "%{hiera('profile_vault::certs_dir')}/root_ca_cert.pem"
+profile_vault::cert_file: "%{hiera('profile_vault::certs_dir')}/vault_cert.pem"
+profile_vault::key_file: "%{hiera('profile_vault::certs_dir')}/vault_key.pem"
+profile_vault::certs_dir: '/etc/ssl/certs/vault'
