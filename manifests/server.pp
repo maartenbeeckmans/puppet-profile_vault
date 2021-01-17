@@ -42,8 +42,9 @@ class profile_vault::server (
       consul::service { $sd_service_name:
         checks => [
           {
-            http     => "https://${advertise_address}:8200",
-            interval => '10s'
+            http            => "https://${advertise_address}:8200",
+            interval        => '10s'
+            tls_skip_verify => true,
           }
         ],
         port   => 8200,
