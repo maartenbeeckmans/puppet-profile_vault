@@ -43,7 +43,7 @@ class profile_vault::server (
         checks => [
           {
             http            => "https://${advertise_address}:8200",
-            interval        => '10s'
+            interval        => '10s',
             tls_skip_verify => true,
           }
         ],
