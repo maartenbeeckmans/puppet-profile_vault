@@ -9,9 +9,6 @@ class profile_vault (
   Array                $sd_service_tags,
   String               $version,
   Boolean              $manage_repo,
-  String               $repo_gpg_key,
-  Stdlib::HTTPUrl      $repo_gpg_url,
-  Stdlib::HTTPUrl      $repo_url,
   Stdlib::Absolutepath $root_ca_file,
   Stdlib::Absolutepath $cert_file,
   Stdlib::Absolutepath $key_file,
@@ -25,7 +22,7 @@ class profile_vault (
   }
 
   if $manage_repo {
-    include profile_vault::repo
+    include hashi_stack::repo
   }
 
   include profile_vault::certs

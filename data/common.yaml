@@ -9,9 +9,6 @@ profile_vault::sd_service_tags:
   - metrics
 profile_vault::version: '1.6.1'
 profile_vault::manage_repo: true
-profile_vault::repo_gpg_key: 'E8A032E094D8EB4EA189D270DA418C88A3219F7B'
-profile_vault::repo_gpg_url: 'https://apt.releases.hashicorp.com/gpg'
-profile_vault::repo_url: 'https://apt.releases.hashicorp.com'
 profile_vault::root_ca_file: "%{hiera('profile_vault::certs_dir')}/root_ca_cert.pem"
 profile_vault::cert_file: "%{hiera('profile_vault::certs_dir')}/vault_cert.pem"
 profile_vault::key_file: "%{hiera('profile_vault::certs_dir')}/vault_key.pem"
