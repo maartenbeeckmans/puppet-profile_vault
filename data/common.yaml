@@ -9,7 +9,7 @@ profile_vault::sd_service_tags:
   - metrics
 profile_vault::version: '1.6.1'
 profile_vault::manage_repo: true
-profile_vault::root_ca_file: "%{hiera('profile_vault::certs_dir')}/root_ca_cert.pem"
-profile_vault::cert_file: "%{hiera('profile_vault::certs_dir')}/vault_cert.pem"
-profile_vault::key_file: "%{hiera('profile_vault::certs_dir')}/vault_key.pem"
+profile_vault::root_ca_file: "%{lookup('profile_vault::certs_dir', String, first, '')}/root_ca_cert.pem"
+profile_vault::cert_file: "%{lookup('profile_vault::certs_dir', String, first, '')}/vault_cert.pem"
+profile_vault::key_file: "%{lookup('profile_vault::certs_dir', String, first, '')}/vault_key.pem"
 profile_vault::certs_dir: '/etc/ssl/certs/vault'
