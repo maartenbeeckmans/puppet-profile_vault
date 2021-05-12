@@ -13,3 +13,7 @@ profile_vault::root_ca_file: "%{hiera('profile_vault::certs_dir')}/root_ca_cert.
 profile_vault::cert_file: "%{hiera('profile_vault::certs_dir')}/vault_cert.pem"
 profile_vault::key_file: "%{hiera('profile_vault::certs_dir')}/vault_key.pem"
 profile_vault::certs_dir: '/etc/ssl/certs/vault'
+profile_vault::use_puppet_certs: true
+profile_vault::root_ca_cert: ~
+profile_vault::vault_cert: ~
+profile_vault::vault_key: ~

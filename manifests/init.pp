@@ -13,6 +13,7 @@ class profile_vault (
   Stdlib::Absolutepath $cert_file,
   Stdlib::Absolutepath $key_file,
   Stdlib::Absolutepath $certs_dir,
+  Boolean              $use_puppet_certs,
   Optional[String]     $root_ca_cert,
   Optional[String]     $vault_cert,
   Optional[String]     $vault_key,
