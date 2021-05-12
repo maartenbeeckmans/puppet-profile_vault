@@ -4,7 +4,6 @@ class profile_vault (
   String               $advertise_address,
   Boolean              $enable_ui,
   Boolean              $manage_firewall_entry,
-  Boolean              $manage_sd_service,
   String               $sd_service_name,
   Array                $sd_service_tags,
   String               $version,
@@ -17,6 +16,7 @@ class profile_vault (
   Optional[String]     $root_ca_cert,
   Optional[String]     $vault_cert,
   Optional[String]     $vault_key,
+  Boolean              $manage_sd_service = lookup('manage_sd_service', Boolean, first, true),
 ){
   file { '/root/.vault-token':
     ensure => absent,
