@@ -1,0 +1,28 @@
+<%- | String $advertise_address,
+      String $root_ca_file,
+      String $unseal_token,
+| -%>
+#!/bin/sh
+#
+# Script used for unsealing vault
+#
+# Usage:
+# ./unseal KEY
+
+export VAULT_ADDR=https://<%= $advertise_address -%>:8200
+export VAULT_CACERT=<%= $root_ca_file %>
+readonly vault_key=<%= $unseal_token %>
+vault_status=$(vault status | grep Sealed | awk '{print $2}')
+
+if [ $vault_status = 'true' ]
+then
+	echo "unsealing vault"
+	vault operator unseal $vault_key
+elif [ $vault_status = 'false' ]
+then
+	echo "vault already unsealed, skipping..."
+else
+	echo "ERROR: unseal did not return true or false"
+	echo "exitting now"
+	exit 1
+fi

@@ -13,6 +13,8 @@ class profile_vault::server (
   Array                $sd_service_tags   = $::profile_vault::sd_service_tags,
   String               $config_dir        = $::profile_vault::config_dir,
   String               $version           = $::profile_vault::version,
+  Boolean              $unseal_cron       = $::profile_vault::unseal_cron,
+  Optional[String]     $unseal_token      = $::profile_vault::unseal_token,
 ) {
   $_listener = {
     'tcp' => {
@@ -78,5 +80,24 @@ class profile_vault::server (
     ensure  => file,
     mode    => '0644',
     content => "export VAULT_ADDR=https://${advertise_address}:8200\n export VAULT_CACERT=${root_ca_file}",
+  }
+
+  if $unseal_cron {
+    $_unseal_script_config = {
+      'advertise_address' => $advertise_address,
+      'root_ca_file'      => $root_ca_file,
+      'unseal_token'      => $unseal_token,
+    }
+
+    file { '/usr/local/bin/unseal-vault.sh':
+      ensure  => present,
+      mode    => '0755',
+      content => epp("${module_name}/unseal.sh.epp", $_unseal_script_config),
+    }
+
+    profile_base::systemd_timer { 'vault-unseal':
+      on_calendar => '*-*-* *:00,05,10,15,20,25,30,35,40,45,50,55:00',
+      command     => "/usr/local/bin/unseal-vault.sh",
+    }
   }
 }

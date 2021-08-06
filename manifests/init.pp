@@ -16,6 +16,8 @@ class profile_vault (
   Optional[String]     $root_ca_cert,
   Optional[String]     $vault_cert,
   Optional[String]     $vault_key,
+  Boolean              $unseal_cron,
+  Optional[String]     $unseal_token,
   Boolean              $manage_sd_service = lookup('manage_sd_service', Boolean, first, true),
 ){
   file { '/root/.vault-token':
@@ -33,4 +35,5 @@ class profile_vault (
   if $manage_firewall_entry {
     include profile_vault::firewall
   }
+
 }

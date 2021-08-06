@@ -16,3 +16,5 @@ profile_vault::use_puppet_certs: true
 profile_vault::root_ca_cert: ~
 profile_vault::vault_cert: ~
 profile_vault::vault_key: ~
+profile_vault::unseal_cron: false
+profile_vault::unseal_token: ~
