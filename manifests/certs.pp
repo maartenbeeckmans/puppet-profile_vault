@@ -24,15 +24,15 @@ class profile_vault::certs (
   if $use_puppet_certs {
     file { $root_ca_file:
       ensure => present,
-      source => $facts['extlib.puppet_config']['main']['localcacert'],
+      source => $facts['extlib__puppet_config']['main']['localcacert'],
     }
     file { $cert_file:
       ensure => present,
-      source => $facts['extlib.puppet_config']['main']['hostcert'],
+      source => $facts['extlib__puppet_config']['main']['hostcert'],
     }
     file { $key_file:
       ensure => present,
-      source => $facts['extlib.puppet_config']['main']['hostprivkey'],
+      source => $facts['extlib__puppet_config']['main']['hostprivkey'],
     }
   } else {
     file { $root_ca_file:
